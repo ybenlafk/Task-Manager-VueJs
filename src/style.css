@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+button, a, [role="button"] {
+  cursor: pointer !important;
+}

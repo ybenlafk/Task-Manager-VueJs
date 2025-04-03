@@ -98,13 +98,8 @@ const initPriorityChart = () => {
   const mediumCount = taskStore.mediumPriorityTasks.length;
   const lowCount = taskStore.lowPriorityTasks.length;
 
-  // Only create chart if we have some data
-  if (taskStore.tasks.length === 0) {
-    console.warn("No task data available for priority chart");
-    return;
-  }
+  if (taskStore.tasks.length === 0) return;
 
-  // Destroy existing chart if it exists
   if (priorityChart) priorityChart.destroy();
 
   priorityChart = new Chart(ctx, {
@@ -137,16 +132,10 @@ const initTimelineChart = () => {
   const ctx = timelineChartRef.value.getContext("2d");
   if (!ctx) return;
 
-  // Only create chart if we have some data
-  if (taskStore.tasks.length === 0) {
-    console.warn("No task data available for timeline chart");
-    return;
-  }
+  if (taskStore.tasks.length === 0) return;
 
-  // Destroy existing chart if it exists
   if (timelineChart) timelineChart.destroy();
 
-  // Get last 7 days
   const dates = [];
   const completedCounts = Array(7).fill(0);
   const createdCounts = Array(7).fill(0);
@@ -162,7 +151,6 @@ const initTimelineChart = () => {
     nextDay.setDate(date.getDate() + 1);
     const nextDayTimestamp = nextDay.getTime();
 
-    // Count tasks completed on this day
     taskStore.completedTasks.forEach((task) => {
       if (!task.completedAt) return;
 
@@ -175,7 +163,6 @@ const initTimelineChart = () => {
       }
     });
 
-    // Count tasks created on this day
     taskStore.tasks.forEach((task) => {
       const createdTimestamp = new Date(task.createdAt).getTime();
       if (
@@ -225,14 +212,12 @@ const initTimelineChart = () => {
   });
 };
 
-// Function to update all charts
 const updateAllCharts = () => {
   initCompletionChart();
   initPriorityChart();
   initTimelineChart();
 };
 
-// Watch for changes in task data
 watch(
   () => taskStore.tasks,
   () => {
@@ -255,7 +240,6 @@ onMounted(async () => {
 });
 
 onBeforeUnmount(() => {
-  // Destroy charts to prevent memory leaks
   if (completionChart) completionChart.destroy();
   if (priorityChart) priorityChart.destroy();
   if (timelineChart) timelineChart.destroy();

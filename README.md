@@ -4,6 +4,12 @@ This is a simple yet powerful Task Manager app built with **Vue 3**, **TypeScrip
 
 > 💡 Perfect for managing tasks with a lightweight and fast development setup.
 
+### 🔗 Live Demo
+
+👉 [View the Live Demo](https://task-manager-vue-js.vercel.app/)
+
+---
+
 ### 🔧 Project Setup
 
 This project leverages Vite for blazing-fast builds and Vue 3's Composition API for a modern developer experience. TypeScript ensures type safety and better maintainability.
@@ -33,4 +39,4 @@ npm run test    # Run tests
 
 ---
 
-Feel free to customize the app and make it your own. Happy coding! 🧑‍💻✨
+Feel free to clone, customize, and expand this app to suit your needs. Happy coding! 🧑‍💻✨
